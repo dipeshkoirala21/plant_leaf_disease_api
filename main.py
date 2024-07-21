@@ -21,8 +21,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-print(tf.__version__)
-
 # Define model paths and class names for different plants
 MODELS = {
     "potato": {
@@ -100,7 +98,6 @@ async def predict(plant_type: str, file: UploadFile = File(...)):
         'class': predicted_class,
         'confidence': float(confidence)
     }
-
 
 if __name__ == "__main__":
     uvicorn.run(app, host='localhost', port=8000)
